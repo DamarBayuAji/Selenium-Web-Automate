@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "selenium-webdriver": "^4.27.0",
+    "supports-color": "^10.0.0"
+  },
+  "scripts": {
+    "test": "mocha 'test/**/*.js'",
+    "test-regression": "mocha --grep '#Regression'",
+    "test-login": "mocha --grep '[login]'"
+  }
+}
