@@ -10,9 +10,8 @@ async function sauceDemoLoginTest(){
 
         // Masukkan Username dan Password
         await driver.findElement(By.id('user-name')).sendKeys('standard_user');
-        await driver.sleep(30);
         await driver.findElement(By.xpath("//input[@id='password']")).sendKeys('secret_sauce');
-        // await driver.sleep(10);
+        
         // Click Button Login
         await driver.findElement(By.xpath("//input[@id='login-button']")).click();
 
@@ -23,7 +22,14 @@ async function sauceDemoLoginTest(){
         // Memastikan kita di dashboard dengan mencari "Burger Button"
         let menuButton = await driver.findElement(By.xpath("//button[@id='react-burger-menu-btn']"));
         assert.strictEqual(await menuButton.isDisplayed(), true, "Menu Button is not visible");
-        await driver.sleep(50);
+
+        // Add item to cart
+        await driver.findElement(By.xpath("//button[@id='add-to-cart-sauce-labs-backpack']")).click();
+
+        // Memastikan item sukses ditambahkan ke cart
+        let iconCart = await driver.findElement(By.className("shopping_cart_link"));
+        assert.strictEqual(await iconCart.isDisplayed(), true, "Logo Cart is not visible");
+        
          
     } finally {
         await driver.quit();
