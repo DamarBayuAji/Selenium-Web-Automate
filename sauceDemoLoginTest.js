@@ -33,7 +33,6 @@ async function sauceDemoLoginTest(){
          
     } finally {
         await driver.quit();
-        
     }
 }
 
